@@ -56,6 +56,12 @@ function App() {
     setTodos(newTodos);
   }
 
+  function toggleTodoCompleteAtIndex(index) {
+    const temporaryTodos = [...todos];
+    temporaryTodos[index].isCompleted = !temporaryTodos[index].isCompleted;
+    setTodos(temporaryTodos);
+  }
+
   return (
     <div className="app">
       <div className="header">
