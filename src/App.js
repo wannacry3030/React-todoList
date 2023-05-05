@@ -25,6 +25,7 @@ function App() {
     }
   });
 
+  // setando o localStorage no browser
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
