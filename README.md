@@ -1,5 +1,5 @@
-## todo:
+# todo:
 
-# create a local storage (browser)
+### create a local storage (browser)
 
-# change color palette
+### change color palette
