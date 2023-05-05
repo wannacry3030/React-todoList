@@ -1,22 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      content: "Pickup dry cleaning",
-      isCompleted: true,
-    },
-    {
-      content: "Get haircut",
-      isCompleted: false,
-    },
-    {
-      content: "Build a todo app in React",
-      isCompleted: false,
-    },
-  ]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = JSON.parse(localStorage.getItem("todos"));
+    if (savedTodos) {
+      return savedTodos;
+    } else {
+      return [
+        {
+          content: "Pickup dry cleaning",
+          isCompleted: true,
+        },
+        {
+          content: "Tarefa 2",
+          isCompleted: false,
+        },
+        {
+          content: "Tarefa 3...",
+          isCompleted: false,
+        },
+      ];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   function handleKeyDown(e, i) {
     if (e.key === "Enter") {
