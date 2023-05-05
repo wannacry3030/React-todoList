@@ -27,7 +27,7 @@ function App() {
         <ul>
           <div className="todo">
             <div className="checkbox" />
-            <input type="text" value="todo one" />
+            <input type="text" value="Tarefa N1" />
           </div>
         </ul>
       </form>
