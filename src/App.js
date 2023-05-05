@@ -22,6 +22,20 @@ function App() {
     if (e.key === "Enter") {
       createTodoAtIndex(e, i);
     }
+    if (e.key === "Backspace" && todos[i].content === "") {
+      e.preventDefault();
+      return removeTodoAtIndex(i);
+    }
+  }
+
+  function removeTodoAtIndex(i) {
+    if (i === 0 && todos.length === 1) return;
+    setTodos((todos) =>
+      todos.slice(0, i).concat(todos.slice(i + 1, todos.length))
+    );
+    setTimeout(() => {
+      document.forms[0].elements[i - 1].focus();
+    }, 0);
   }
 
   function createTodoAtIndex(e, i) {
@@ -49,14 +63,19 @@ function App() {
       </div>
       <form className="todo-list">
         <ul>
-          {/* criando uma função MAP */}
           {todos.map((todo, i) => (
-            <div className="todo">
-              <div className="checkbox" />
+            <div className={`todo ${todo.isCompleted && "todo-is-completed"}`}>
+              <div
+                className={"checkbox"}
+                onClick={() => toggleTodoCompleteAtIndex(i)}
+              >
+                {todo.isCompleted && <span>&#x2714;</span>}
+              </div>
               <input
                 type="text"
                 value={todo.content}
                 onKeyDown={(e) => handleKeyDown(e, i)}
+                onChange={(e) => updateTodoAtIndex(e, i)}
               />
             </div>
           ))}
