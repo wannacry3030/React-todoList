@@ -1,6 +1,5 @@
 {
   "name": "todo-app",
-  "homepage": "https://wannacry3030.github.io/React-todoList/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
